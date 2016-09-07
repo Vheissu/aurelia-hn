@@ -1,0 +1,72 @@
+<template>
+    <div class="loading-section" if.bind="!item">
+        <div class="loader">
+        Loading...
+        </div>
+    </div
+    >
+    <div if.bind="item">
+        <div class="item-laptop">
+        <p if.bind="item.url"> 
+            <a class="title" href="${item.url}">
+            ${item.title}
+            </a>
+            <span class="domain">${item.url | domain}</span>
+        </p>
+        <p if.bind="!item.url">
+            <a class="title" route-href="name: item; params.bind: {id: item.id}">
+            ${item.title}
+            </a>
+        </p>
+        <div class="subtext-laptop">
+            <span if.bind="item.type !== 'job'">
+            ${item.score} points by 
+            <a route-href="name: user; params.bind: {id: item.by}">${item.by}</a>
+            </span> 
+            <span [class.item-details]="item.type !== 'job'">
+            ${ (item.time | amFromUnix) | amTimeAgo }
+            <span if.bind="item.type !== 'job'"> |
+                <a route-href="name: item; params.bind: {id: item.id}">
+                <span if.bind="item.descendants !== 0">
+                    ${item.descendants}
+                    <span if.bind="item.descendants === 1">comment</span>
+                    <span if.bind="item.descendants > 1">comments</span>
+                </span>
+                <span if.bind="item.descendants === 0">discuss</span>
+                </a>
+            </span>
+            </span>
+        </div>
+        </div>
+        <div class="item-mobile">
+        <p if.bind="item.url"> 
+            <a class="title" href="${item.url}">
+            ${item.title}
+            </a>
+            <span class="domain">${item.url | domain}</span>
+        </p>
+        <p if.bind="!item.url">
+            <a class="title" route-href="name: item; params.bind: {id: item.id}">
+            ${item.title}
+            </a>
+        </p>
+        <div class="subtext-palm">
+            <div class="details" if.bind="item.type !== 'job'">
+            <span class="name"> <a route-href="name: user; params.bind: {id: item.by}">${item.by}</a></span>
+            <span class="right">${item.score} ★</span>
+            </div>
+            <div class="details">
+            ${ (item.time | amFromUnix) | amTimeAgo }
+            <a route-href="name: item; params.bind: {id: item.id}" class="comment-number" if.bind="item.type !== 'job'"> • 
+            <span if.bind="item.descendants !== 0">
+                ${item.descendants}
+                <span if.bind="item.descendants === 1">comment</span>
+                <span if.bind="item.descendants > 1">comments</span>
+            </span>
+            <span if.bind="item.descendants === 0">discuss</span>
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+</template>

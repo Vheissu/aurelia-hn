@@ -1,0 +1,34 @@
+<template>
+<header>
+    <div id="header">
+      <a class="home-link" route-href="route: news; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)">
+        <img class="logo" src="images/aurelia-hn.png">
+      </a>
+      <div class="header-text">
+        <div class="left">
+          <h1 class="name">
+            <a route-href="route: news; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)" class="app-title">Aurelia HN</a>
+          </h1>
+          <span class="header-nav">
+            <a route-href="route: newest; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)">new</a>
+            <span class="divider">
+              |
+            </span>
+            <a route-href="route: show; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)">show</a>
+            <span class="divider">
+              |
+            </span>
+            <a route-href="route: ask; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)">ask</a>
+            <span class="divider">
+              |
+            </span>
+            <a route-href="route: jobs; params.bind: {id: 1}" click.delegate="window.scrollTo(0, 0)">jobs</a>
+          </span>
+        </div>
+        <div class="info">
+          Built with <a href="https://cli.angular.io/" target="_blank">Aurelia CLI</a>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>

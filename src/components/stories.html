@@ -1,0 +1,18 @@
+<template>
+    <require from="./item"></require>
+    
+    <div class="main-content">
+        <p class="job-header" if="storiesType === 'jobs'">These are jobs at startups that were funded by Y Combinator.</p>
+
+        <ol class="${storiesType !== 'jobs' ? 'list-margin' : ''}" start="${indexFrom + 1}">
+            <li repeat.for="item of items | slice: $index + 30" class="post">
+                <item class="item-block" item-id="${item}"></item>
+            </li>
+        </ol>
+
+        <div class="nav">
+            <a route-href="route: ${storiesType}; params.bind: {page: pageNum - 1}" if.bind="indexFrom > 0" click.delegate="window.scrollTo(0, 0)" class="prev">‹ Prev</a>
+            <a route-href="route: ${storiesType}; params.bind: {page: pageNum + 1}" if.bind="items.length > indexFrom + 30" click.delegate="window.scrollTo(0, 0)" class="more">More ›</a>
+        <div>
+    </div>
+</template>
